@@ -1,0 +1,47 @@
+<?php 
+
+use Drupal\Component\Utility\SafeMarkup;
+
+
+/**
+ * Implements hook_mail().
+ */
+function birthday_remind_mail($key, &$message, $params) {
+	$options = array(
+			'langcode' => $message['langcode'],
+	);
+
+	switch ($key) {
+		case 'birthday_remind':
+			$message['from'] = \Drupal::config('system.site')->get('mail');
+			$message['subject'] = t('Happy Birthday :: @title', array('@title' => $params['title']), $options);
+			$message['body'][] = SafeMarkup::checkPlain($params['message']);
+			break;
+	}
+}
+
+/**
+ * Implementation of hook_cron()
+ */
+function birthday_remind_cron(){
+	$cron_config = \Drupal::configFactory()->getEditable('birthday.settings');
+	// Default to an hourly interval. Of course, cron has to be running at least
+	// 24 hour for this to work.
+	$interval = $cron_config->get('cron_interval');
+	$interval = !empty($interval) ? $interval : 300;
+	
+	// set flag_email_send = 0
+	$cron_config->set('flag_email_send', 0)->save();	
+}
+
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function birthday_remind_entity_type_build(array &$entity_types) {
+	/** @var $entity_types \Drupal\Core\Entity\EntityTypeInterface[] */
+	$entity_types['action']
+	->setLinkTemplate('collection', '/admin/birthday/bsettings');
+}
+
+?>

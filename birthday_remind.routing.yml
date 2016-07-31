@@ -1,0 +1,8 @@
+birthday_bsettings:
+    path: /admin/birthday/bsettings
+    defaults:
+        _form: '\Drupal\birthday_remind\Form\BsettingsForm'
+        _title: 'Birthday Reminder Configuration Page'
+    requirements:
+        _permission: 'access content'
+        

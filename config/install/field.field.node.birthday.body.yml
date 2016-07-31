@@ -1,0 +1,21 @@
+# field.field.node.birthday.body.yml
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.node.body
+        - node.type.birthday
+    module:
+        - text
+id: node.birthday.body
+field_name: body
+entity_type: node
+bundle: birthday
+label: 'Body'
+description: 'More specific information about person.'
+required: false
+translatable: true
+default_value_callback: ''
+settings:
+    display_summary: true
+field_type: text_with_summary

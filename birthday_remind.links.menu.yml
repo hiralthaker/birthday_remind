@@ -1,0 +1,6 @@
+birthday_bsettings.admin:
+  title: 'Birthday Reminder Settings'
+  description: 'Settings for birthday reminder module'
+  parent: system.admin_config_development
+  route_name: birthday_bsettings
+  weight: 100

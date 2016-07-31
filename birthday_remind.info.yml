@@ -1,0 +1,6 @@
+name: Birthday Remider
+type: module
+description: Give reminder for birthdays
+package: Custom
+core: 8.x
+configure: birthday_bsettings

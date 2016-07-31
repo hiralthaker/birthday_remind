@@ -1,0 +1,19 @@
+# field.field.node.birthday.field_bdayemail.yml
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_bdayemail
+    - node.type.birthday
+id: node.birthday.field_bdayemail
+field_name: field_bdayemail
+entity_type: node
+bundle: birthday
+label: 'Email Address'
+description: 'Email address to send email on his birthday.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email
